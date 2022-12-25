@@ -1,0 +1,26 @@
+.addPost{
+    background-color: rgb(6, 240, 181);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-style: solid;
+    border-radius: 1rem;
+    width: 500px;
+    height: auto;
+    margin: 4rem;
+    padding: 2rem;
+}
+
+input{
+    margin: 1rem;
+}
+textarea{
+    margin: 1rem;
+    height: 200px;
+    width: 300px;
+}
+
+.text{
+    display: flex;
+}

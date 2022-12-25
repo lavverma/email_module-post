@@ -1,0 +1,35 @@
+body{
+    background-color: rgb(6, 127, 240);
+    background-size: cover;
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS18VEnnxilzuz5ts_2P4QWAsPyl4d7AQurTQ&usqp=CAU");
+}
+
+.App{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.signUp{
+    background-color: rgb(6, 240, 181);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-style: solid;
+    border-radius: 1rem;
+    width: 400px;
+    padding: 1rem;
+}
+button{
+    margin-top: 1rem;
+    background-color: rgb(26, 164, 243);
+    font-size :20px ;
+    font-weight: bold;
+}
+
+input{
+ border-radius: 3px;
+ font-weight: bold;
+ padding: 0.2rem;
+ /* border-style: solid; */
+}
