@@ -9,8 +9,7 @@ const ProfileUpdate = () => {
     const [details, setDetails] = useState({
         fname: "",
         lname: "",
-        phone: "",
-        password: ""
+        phone: ""
     })
 
     const userIdJson = useParams()
@@ -22,7 +21,7 @@ const ProfileUpdate = () => {
        try{
         const res = await axios.get(`${url}/getUser/${userId}` , { headers: { authorization: `Bearer ${token}`} })
         const fetchedUserData = res.data.data
-        setDetails({...fetchedUserData, password : ""})
+        setDetails({...fetchedUserData})
        }
        catch(err){
         alert(err.response.data.message)
@@ -79,12 +78,6 @@ const ProfileUpdate = () => {
                 value={details.phone}
                 placeholder='8X7XXXX2X4'
                 onChange={(e) => handler(e)} />
-            <h4>Password</h4>
-            <input
-                type="password"
-                name='password'
-                value={details.password}
-                onChange={(e) => handler(e)} />
                 <div>
             <button onClick={(e) => updateData(e)}>Update</button>
                 </div>
@@ -92,9 +85,6 @@ const ProfileUpdate = () => {
                     <button>Back To post</button>
                 </Link>
         </form>
-        {/* <h4>Already Registered ?..
-            <Link to={'/login'}>Login</Link>
-        </h4> */}
     </div>
   )
 }
