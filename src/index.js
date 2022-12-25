@@ -20,8 +20,8 @@ app.use("/logo", express.static(path.join(__dirname, 'upload', 'images')))
 
 
 app.use(fileUpload({
-  // useTempFiles: true,
-  // tempFileDir: path.join(__dirname, 'tmp'),
+  useTempFiles: true,
+  tempFileDir: path.join(__dirname, 'tmp'),
   createParentPath: true,
   limits: { fileSize: 2 * 1024 * 1024 }
 }));
