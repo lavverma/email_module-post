@@ -1,16 +1,12 @@
 const { isValidRequest,
   isValidString,
-  isValidName,
-  isValidId,
-  isValidMail,
-  isValidPhone,
-  isValidPassword } = require("../validator/validation")
+  isValidId } = require("../validator/validation")
 
 const postModel = require("../models/postModel")
 
 const path = require("path")
 
-
+//=========================== Add A new Post =============================================================
 const createPost = async function (req, res) {
   try {
     const data = req.body
@@ -21,6 +17,7 @@ const createPost = async function (req, res) {
     }
     const { caption, post, userId } = data
 
+    //Validations
     if (!isValidString(caption)) {
       return res
         .status(400)
@@ -36,6 +33,8 @@ const createPost = async function (req, res) {
         .status(400)
         .send({ status: false, message: "Give correct UserId" })
     }
+
+    // Logo file upload
     const logo = req.files.logo;
 
     if (!req.files || Object.keys(req.files).length === 0) {
@@ -46,13 +45,16 @@ const createPost = async function (req, res) {
     if (logo.truncated) {
       return res.status(400).send({ status: false, message: "file size is too large" })
     }
-    if(logo.mimetype.split("/")[0] !== "image"){
-      return res.status(400).send({status: false, message: 'Accept only images' })
+    if (logo.mimetype.split("/")[0] !== "image") {
+      return res.status(400).send({ status: false, message: 'Accept only images' })
     }
 
     await logo.mv(newPath)
     const logoUrl = `${process.env.SERVER_URL}/logo/${logoName}`
     data.logoUrl = logoUrl
+
+
+    // new Document create
     const postData = await postModel.create(data)
     return res.status(201).send({ status: true, data: postData })
 
@@ -63,7 +65,7 @@ const createPost = async function (req, res) {
   }
 }
 
-
+//========================= Fetch All the Posts ==============================================
 const getAllPost = async function (req, res) {
   try {
     const allPost = await postModel.find({ isDeleted: false }).populate("userId")
@@ -73,6 +75,9 @@ const getAllPost = async function (req, res) {
     return res.status(500).send({ status: false, message: err.message })
   }
 }
+
+
+//======================= Get Post By PostId ======================================
 
 const getPostById = async function (req, res) {
   try {

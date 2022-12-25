@@ -75,7 +75,7 @@ const createUser = async function(req, res) {
                 });
         }
 
-        //Encrypting password
+        //Create Encrypting password
         const encryptPassword = await bcrypt.hash(password, 10);
         data.password = encryptPassword
 
@@ -128,6 +128,7 @@ const loginUser = async function (req, res) {
           message: "User Not Found",
         });
 
+        //password verification
       const matchPassword = await bcrypt.compare(password, user.password);
       if (!matchPassword) {
         return res
@@ -180,9 +181,9 @@ const getUser = async function (req, res) {
 
     const data = req.body
 
-    let { fname, lname, email, phone, password } =  data;
+    let { fname, lname, phone} =  data;
 
-            //Validation of first name if present
+   //Validation of first name if present
     if (fname) {
       if (!isValidString(fname) || !isValidName(fname)) {
         return res
@@ -209,20 +210,6 @@ const getUser = async function (req, res) {
                 .status(400)
                 .send({ status: false, message: "Enter phone in valid format" });
         }
-    }
-
-    if(password){
-        if (!isValidString(password) || !isValidPassword(password)) {
-            return res
-                .status(400)
-                .send({
-                    status: false,
-                    message: "Password should contain min 8 and max 15 character with a number and a special character",
-                });
-            }
-            //Encrypting password
-        const encryptPassword = await bcrypt.hash(password, 10);
-        data.password = encryptPassword
     }
 
     const updatedUser = await userModel.findOneAndUpdate(
