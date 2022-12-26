@@ -4,7 +4,7 @@ import jwt  from"jwt-decode"
 import { Link } from 'react-router-dom'
 import "../style/allPost.css"
 
-const url = import.meta.env.VITE_SERVER_URL
+const url = import.meta.env.VITE_SERVER_URL 
 
 const AllPost = () => {
     const [allPosts, setAllPosts] = useState([])

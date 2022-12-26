@@ -3,7 +3,7 @@ import axios from "axios"
 import { useParams } from 'react-router-dom'
 import "../style/postDetails.css"
 
-const url = import.meta.env.VITE_SERVER_URL
+const url = import.meta.env.VITE_SERVER_URL 
 const PostDetails = () => {
     const [postDetails, setPostDetails] = useState({})
     const [fetchedPost, setFetchedPost] = useState({})

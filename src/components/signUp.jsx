@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import "../style/signUp.css"
 
-const url = import.meta.env.VITE_SERVER_URL
+const url = import.meta.env.VITE_SERVER_URL 
 
 function SignUp() {
     const navigate = useNavigate();

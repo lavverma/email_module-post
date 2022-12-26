@@ -8,7 +8,6 @@ const url = import.meta.env.VITE_SERVER_URL
 const AddPost = () => {
     const navigate = useNavigate();
     const [logo, setLogo] = useState()
-    // const [logoPreview, setLogoPreview] =useState()
 
     const [post, setPost] = useState({
         caption :'',
@@ -52,7 +51,6 @@ const AddPost = () => {
   return (
     <div>
         <form className='addPost'>
-         {/* <img src={logoPreview} /> */}
          <div className='text'>
             <h4> post logo</h4>
         <input type="file" name="logo" onChange={(e)=>addLogo(e)} />
